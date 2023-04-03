@@ -6,21 +6,14 @@ public class Coordinate implements Serializable{
 
     private int c;
 
-    public Coordinate(int c) {
-        this.c = c;
-    }
-
+    //constructor
     Coordinate() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public int get() {
-        return c;
-    }
-
     public boolean equals(Coordinate d) {
         return (c == d.get());
-    }
+    } // number within accepted coordinate
 
     // Returns the row (0-7) of the coordinate (1-32).
     public int row() {
@@ -46,10 +39,15 @@ public class Coordinate implements Serializable{
         return "" + c;
     }
 
-    // Returns the coordinate of the square that is one square above and one
-    // square to the left of c.
+    public int get() {
+        return c;
+    }
+
+    public Coordinate(int c) {
+        this.c = c;
+    }
+
     public Coordinate upLeftMove() {
-        //System.out.println("Checking if it is Up left Move");
 
         if (row() % 2 == 0) {
             return new Coordinate(c - 5);
@@ -58,9 +56,9 @@ public class Coordinate implements Serializable{
         }
     }
 
+    // method for movement from 1 coordinate
     public Coordinate upRightMove() {
-        //System.out.println("Checking if it is Up Right Move");
-        //System.out.println("The Row of this Checker is " + row());
+
 
         if (row() % 2 == 0) {
             return new Coordinate(c - 4);
@@ -100,33 +98,22 @@ public class Coordinate implements Serializable{
     public Coordinate downRightJump() {
         return new Coordinate(c + 9);
     }
+
+    public static void main(String args[]){ // main function for error checking
+
+        Coordinate cd = new Coordinate(8);
+        System.out.println("Get function: " + cd.get() + " Equals function: " + cd.equals(cd));
+        System.out.println("Row: " + cd.row() + " Column: " + cd.column());
+        System.out.println(cd.toString());
+        Coordinate test1 = cd.upLeftJump();
+        Coordinate test2 = cd.upRightJump();
+        Coordinate test3 = cd.downLeftJump();
+        Coordinate test4 = cd.downRightJump();
+        Coordinate test5 = cd.upLeftMove();
+        Coordinate test6 = cd.upRightMove();
+        Coordinate test7 = cd.downLeftMove();
+        Coordinate test8 = cd.downRightMove();
+
+    }
 }
-
-/* Comments:-
-
-This is a Java code for a Coordinate class used in a Checkers game. The Coordinate class has several
-methods to calculate the row and column of a coordinate on the Checkers board, as well as methods to determine
-the possible moves and jumps that a Checkers piece can make based on its current position.
-
-The class implements the Serializable interface, which allows objects of the class to be converted into a byte stream
-and sent over the network or stored in a file.
-
-The constructor takes an integer value representing the coordinate, and the get() method returns that value.
-
-The equals() method takes another Coordinate object and returns true if the values of the two coordinates are equal.
-
-The row() method calculates and returns the row of the current coordinate on the Checkers board based on its value.
-
-The column() method calculates and returns the column of the current coordinate on the Checkers board based on
-its value and the row.
-
-The toString() method returns a string representation of the coordinate value.
-
-The upLeftMove(), upRightMove(), downLeftMove(), and downRightMove() methods return the possible moves
-that a Checkers piece can make based on its current position.
-
-The upLeftJump(), upRightJump(), downLeftJump(), and downRightJump() methods return the possible jumps that a Checkers
-piece can make based on its current position.
-
-The class also has a default constructor that throws an UnsupportedOperationException. */
 
