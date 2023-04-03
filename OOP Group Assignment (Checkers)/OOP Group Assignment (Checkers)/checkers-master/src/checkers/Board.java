@@ -1,3 +1,5 @@
+//Ahmad Najwan
+
 package checkers;
 
 import javax.swing.*;
