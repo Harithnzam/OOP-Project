@@ -1,3 +1,5 @@
+//Che Ku
+
 package checkers;
 
 public class BoardList {
