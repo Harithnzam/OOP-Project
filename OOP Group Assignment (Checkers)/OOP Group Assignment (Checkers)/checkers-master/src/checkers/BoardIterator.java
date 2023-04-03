@@ -1,36 +1,41 @@
 package checkers;
 
-/**
- * Iterator for the BoardList class.
- */
 public class BoardIterator {
-   private BoardList boardList;
-   private int current;
-   
+
+   // Declare private member variables.
+   private BoardList boardList; // A reference to the BoardList object to iterate over.
+   private int current; // An integer representing the current index in the iteration.
+
+   // Constructor method for BoardIterator class.
    public BoardIterator(BoardList boardList) {
-      this.boardList = boardList;
-      current = 0;
+      this.boardList = boardList; // Set the boardList member variable to the passed-in object.
+      current = 0; // Set the current index to 0 (the beginning of the list).
    }
 
-
+   // Check if there is a next element in the iteration.
    public boolean hasNext() {
-      return (current < boardList.size());
+      return (current < boardList.size()); // Return true if the current index is less than the size of the list.
    }
-   
-   
+
+   // Get the next element in the iteration.
    public Board next() {
-      return boardList.get(current++);
-   }  
+      return boardList.get(current++); // Return the current board and increment the index by 1.
+   }
+
+
+   //to check error in this class
+   //using simple code to run this class
+   public static void main(String[] args) {
+      BoardList boardList = new BoardList();
+      boardList.add(new Board());
+      boardList.add(new Board());
+      boardList.add(new Board());
+
+      BoardIterator iterator = new BoardIterator(boardList);
+      while (iterator.hasNext()) {
+         Board board = iterator.next();
+         System.out.println(board.toString());
+      }
+   }
+
 }
-
-/* Comments: -
-
-   This is a simple Java class that provides an iterator for the BoardList class.
-   The BoardIterator class has two instance variables: boardList, which is the BoardList object to be iterated over, and current, which keeps track of the current index in the iteration.
-   The constructor takes a BoardList object as a parameter and initializes boardList to this object and current to 0.
-
-   The hasNext() method returns true if there are more elements in the boardList to iterate over (i.e., if the current index is less than the size of the boardList), and false otherwise.
-   The next() method returns the next element in the boardList and advances the current index by 1.
-   If there are no more elements in the boardList, it throws a NoSuchElementException.
-
- */
